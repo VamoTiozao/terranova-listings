@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nashville Cheat Sheet — Lindsey</title>
+<style>
+  /* Always light — warm beige paper, pine-teal ink, poster gold (Hatch Show Print) */
+  :root{
+    color-scheme:light;
+    --bg:#f7f0dd; --card:#fffdf6; --ink:#222e28; --muted:#6d7a71; --line:#e3d8bf;
+    --accent:#1d6b5c;  --accent-soft:#e7f1ee;
+    --gold:#a8791f;    --gold-soft:#fbf1d9;
+    --blue:#3a6a8c;    --blue-soft:#e9f0f6;
+    --green:#3f7a4e;   --green-soft:#eaf3ec;
+    --clay:#bd5c35;    --clay-soft:#fbeee7;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 18px 80px}
+
+  /* ---------- header ---------- */
+  header.hero{
+    position:relative; z-index:3; overflow:hidden;
+    background:
+      radial-gradient(95% 62% at 50% 112%, rgba(232,180,72,.42) 0%, rgba(232,180,72,0) 62%),
+      radial-gradient(130% 100% at 50% -12%, #2f8d74 0%, rgba(47,141,116,0) 62%),
+      linear-gradient(168deg,#1d6b5c 0%,#175449 55%,#123f3b 100%);
+    color:#fff8e8; padding:48px 18px 118px; text-align:center;
+    border-bottom:6px solid #d8a63c;
+  }
+  header.hero .hero-inner{position:relative;z-index:2}
+  /* Nashville skyline silhouette across the bottom of the header */
+  .skyline{position:absolute;left:0;bottom:0;width:100%;height:108px;display:block;z-index:1}
+  @media(max-width:640px){
+    header.hero{padding:38px 18px 92px}
+    .skyline{height:84px}
+  }
+  header.hero h1{
+    margin:0;font-size:38px;letter-spacing:-.6px;line-height:1.1;font-weight:800;
+    color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.18)
+  }
+  header.hero .sub{margin:14px auto 0;max-width:620px;opacity:.92;font-size:16px}
+  header.hero .tag{
+    display:inline-block;margin-bottom:16px;padding:5px 14px;border-radius:99px;
+    background:rgba(216,166,60,.22); border:1px solid rgba(240,200,110,.5); color:#f6d894;
+    font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700
+  }
+  /* letterpress-style double rule under the title */
+  header.hero .rule{
+    width:132px;margin:16px auto 0;border-top:3px solid #d8a63c;
+    border-bottom:1px solid rgba(216,166,60,.55);height:5px
+  }
+
+  /* ---------- margin artwork ---------- */
+  .deco{
+    position:fixed; top:0; bottom:0; width:170px; z-index:1;
+    display:none; flex-direction:column; justify-content:space-around; align-items:center;
+    padding:70px 0; pointer-events:none;
+  }
+  .deco.l{left:0} .deco.r{right:0}
+  .deco svg{width:60px;height:60px;opacity:.22}
+  .deco .i1{color:var(--accent)}
+  .deco .i2{color:var(--gold)}
+  .deco .i3{color:var(--clay)}
+  .deco .a{transform:rotate(-9deg)}
+  .deco .b{transform:rotate(7deg)}
+  .deco .c{transform:rotate(-4deg)}
+  @media(min-width:1260px){ .deco{display:flex} }
+
+  /* ---------- nav ---------- */
+  nav.toc{
+    position:sticky;top:0;z-index:20;background:var(--bg);
+    border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:26px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+  }
+  nav.toc .inner{display:flex;gap:7px;max-width:900px;margin:0 auto;padding:0 18px;white-space:nowrap}
+  nav.toc a{
+    flex:0 0 auto;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;
+    padding:6px 12px;border:1px solid var(--line);border-radius:99px;background:var(--card)
+  }
+  nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* ---------- sections ---------- */
+  section{margin:0 0 40px}
+  h2{
+    font-size:23px;margin:34px 0 6px;letter-spacing:-.3px;
+    display:flex;align-items:center;gap:10px
+  }
+  h2 .em{font-size:24px}
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin:28px 0 12px;font-weight:700}
+  .lede{color:var(--muted);margin:0 0 18px;font-size:15px}
+
+  /* ---------- cards ---------- */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;margin-bottom:12px;
+  }
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .card h4{margin:0;font-size:17px;font-weight:700;letter-spacing:-.2px}
+  .card h4 a{color:inherit;text-decoration:none;border-bottom:1.5px solid var(--accent)}
+  .card .meta{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .card p{margin:9px 0 0;font-size:14.5px}
+  .card .order{
+    margin-top:10px;font-size:13.5px;background:var(--accent-soft);color:var(--ink);
+    border-radius:8px;padding:8px 11px;border-left:3px solid var(--accent)
+  }
+  .card .order b{color:var(--accent)}
+
+  .pill{
+    flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+    padding:4px 9px;border-radius:99px;white-space:nowrap
+  }
+  .p-drive{background:var(--blue-soft);color:var(--blue)}
+  .p-walk{background:var(--green-soft);color:var(--green)}
+  .p-star{background:var(--clay-soft);color:var(--clay)}
+
+  .stars{color:var(--clay);font-size:12px;font-weight:700;letter-spacing:.5px}
+
+  /* ---------- callouts ---------- */
+  .note{
+    border-radius:12px;padding:14px 16px;margin:16px 0;font-size:14.5px;
+    background:var(--gold-soft);border-left:4px solid var(--gold)
+  }
+  .note.blue{background:var(--blue-soft);border-left-color:var(--blue)}
+  .note.green{background:var(--green-soft);border-left-color:var(--green)}
+  .note strong{display:block;margin-bottom:3px}
+
+  /* ---------- itinerary ---------- */
+  .day{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 18px;margin-bottom:10px;display:flex;gap:16px;align-items:flex-start
+  }
+  .day .dnum{
+    flex:0 0 62px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+    color:var(--clay);padding-top:3px
+  }
+  .day .dbody{flex:1;min-width:0}
+  .day .dbody b{display:block;font-size:15.5px;margin-bottom:4px}
+  .day .dbody span{font-size:14px;color:var(--muted)}
+
+  /* ---------- misc ---------- */
+  ul.tight{margin:8px 0 0;padding-left:20px;font-size:14.5px}
+  ul.tight li{margin-bottom:6px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:640px){
+    .grid2{grid-template-columns:1fr}
+    header.hero h1{font-size:27px}
+    .day{flex-direction:column;gap:4px}
+    .day .dnum{flex:none}
+  }
+  footer{
+    text-align:center;color:var(--muted);font-size:13px;
+    border-top:1px solid var(--line);padding-top:22px;margin-top:44px
+  }
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- ===== margin artwork: cowboy hat, guitar, boot, pick, pines, record, star, mountains ===== -->
+<div class="deco l" aria-hidden="true">
+  <svg class="i2 a" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 41c0-16 3-27 15-27s15 11 15 27"/>
+    <path d="M17 41c-7 1-11 3-11 5 0 4 12 7 26 7s26-3 26-7c0-2-4-4-11-5"/>
+    <path d="M17 37c4 2 10 3 15 3s11-1 15-3"/>
+    <path d="M23 20c3 3 15 3 18 0"/>
+  </svg>
+  <svg class="i1 b" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="26" cy="41" r="14"/><circle cx="30" cy="26" r="10"/><circle cx="27" cy="37" r="3.4"/>
+    <path d="M36.5 19.5 51 5"/><path d="M49 3.5 55.5 10"/>
+  </svg>
+  <svg class="i3 c" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 8h13v24c0 5 2 8 6 11l5 4c2 2 3 4 3 6H22c-5 0-8-3-8-8V8z"/>
+    <path d="M24 32h13"/><path d="M14 47h37"/>
+  </svg>
+  <svg class="i1 a" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 6 20 26h7L16 45h32L37 26h7z"/><path d="M32 45v11"/>
+  </svg>
+  <svg class="i2 b" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="23"/><circle cx="32" cy="32" r="12"/><circle cx="32" cy="32" r="3"/>
+  </svg>
+</div>
+
+<div class="deco r" aria-hidden="true">
+  <svg class="i1 b" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 47 22 22l10 14 10-18 16 29z"/>
+  </svg>
+  <svg class="i3 a" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 10c12 0 20 6 20 14 0 12-14 29-20 29s-20-17-20-29c0-8 8-14 20-14z"/>
+  </svg>
+  <svg class="i2 c" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 7l7.2 15.2L55 24.5 43.5 36.2 46.3 53 32 45.1 17.7 53l2.8-16.8L9 24.5l15.8-2.3z"/>
+  </svg>
+  <svg class="i1 a" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26 45V15l23-5.5V39"/><circle cx="19.5" cy="46.5" r="7"/><circle cx="42.5" cy="40.5" r="7"/>
+  </svg>
+  <svg class="i2 b" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 41c0-16 3-27 15-27s15 11 15 27"/>
+    <path d="M17 41c-7 1-11 3-11 5 0 4 12 7 26 7s26-3 26-7c0-2-4-4-11-5"/>
+    <path d="M17 37c4 2 10 3 15 3s11-1 15-3"/>
+    <path d="M23 20c3 3 15 3 18 0"/>
+  </svg>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>Nashville Cheat Sheet</h1>
+    <div class="rule"></div>
+  </div>
+
+  <!-- Nashville skyline — the twin-spired "Batman Building" (AT&T Tower) at center -->
+  <svg class="skyline" viewBox="0 0 1400 120" preserveAspectRatio="none" aria-hidden="true">
+    <!-- stars -->
+    <g fill="#f6d894" opacity=".55">
+      <circle cx="100" cy="9" r="1.8"/><circle cx="300" cy="6" r="1.4"/><circle cx="520" cy="11" r="1.6"/>
+      <circle cx="860" cy="7" r="1.5"/><circle cx="1050" cy="12" r="1.8"/><circle cx="1300" cy="6" r="1.4"/>
+    </g>
+    <!-- distant ridge of buildings -->
+    <path opacity=".5" fill="#14514a" d="M0,120 L0,50 L60,50 L60,68 L120,68 L120,40 L175,40 L175,62 L235,62
+      L235,45 L300,45 L300,70 L365,70 L365,38 L425,38 L425,66 L490,66 L490,44 L550,44 L550,60 L615,60
+      L615,36 L680,36 L680,64 L745,64 L745,42 L810,42 L810,58 L875,58 L875,34 L935,34 L935,62 L1000,62
+      L1000,40 L1065,40 L1065,68 L1130,68 L1130,44 L1195,44 L1195,60 L1260,60 L1260,38 L1325,38 L1325,64
+      L1400,64 L1400,120 Z"/>
+    <!-- front skyline -->
+    <path fill="#0d3632" d="M0,120 L0,62 L55,62 L55,80 L92,80 L92,44 L145,44 L145,86 L185,86 L185,32 L242,32
+      L242,70 L292,70 L292,50 L336,50 L336,82 L392,82 L392,20 L440,20 L440,60 L482,60 L482,78 L520,78
+      L520,50 L560,50 L560,74 L610,74 L610,40 L660,40 L660,28 L745,28 L745,40 L800,40 L800,76 L845,76
+      L845,34 L900,34 L900,66 L960,66 L960,18 L1005,18 L1005,58 L1050,58 L1050,84 L1100,84 L1100,46
+      L1160,46 L1160,72 L1215,72 L1215,54 L1275,54 L1275,80 L1330,80 L1330,60 L1400,60 L1400,120 Z"/>
+    <!-- AT&T "Batman Building": stepped crown + twin spires -->
+    <g fill="#0d3632">
+      <rect x="676" y="13" width="53" height="17"/>
+      <rect x="661" y="0" width="6" height="30"/>
+      <rect x="738" y="0" width="6" height="30"/>
+    </g>
+    <!-- a few lit windows -->
+    <g fill="#e8b448" opacity=".5">
+      <rect x="200" y="44" width="3" height="5"/><rect x="216" y="58" width="3" height="5"/>
+      <rect x="405" y="32" width="3" height="5"/><rect x="420" y="48" width="3" height="5"/>
+      <rect x="680" y="46" width="3" height="5"/><rect x="710" y="62" width="3" height="5"/>
+      <rect x="860" y="48" width="3" height="5"/><rect x="972" y="32" width="3" height="5"/>
+      <rect x="1115" y="60" width="3" height="5"/><rect x="1232" y="68" width="3" height="5"/>
+    </g>
+  </svg>
+</header>
+
+<nav class="toc"><div class="inner">
+  <a href="#start">Start Here</a>
+  <a href="#hikes">Hiking &amp; Nature</a>
+  <a href="#water">Water</a>
+  <a href="#me">Middle Eastern</a>
+  <a href="#mex">Mexican</a>
+  <a href="#classics">Nashville Classics</a>
+  <a href="#more">More Food</a>
+  <a href="#coffee">Coffee</a>
+  <a href="#music">Music</a>
+  <a href="#indoor">Rainy / Hot Day</a>
+  <a href="#tips">Tips</a>
+</div></nav>
+
+<div class="wrap">
+
+<!-- ============ START HERE ============ -->
+<section id="start">
+  <h2><span class="em">📍</span> Start Here</h2>
+  <p class="lede">You're staying in the Vanderbilt/Midtown pocket, which is genuinely one of the best places to base yourself. Centennial Park is a walk away, you're 10–15 minutes from almost everything, and both of the food scenes you care about are a straight shot down one road.</p>
+
+  <div class="note">
+    <strong>☀️ The single most important thing: it's August.</strong>
+    Highs around 88–92°F, humidity around 70%, and a heat index that regularly hits 100°F+. This changes how you plan a day — not whether you go outside. <b>Hike before 10am.</b> Do museums, long lunches, and shops from noon to 4. Go back outside after 5. Afternoon thunderstorms pop up and pass; they're usually not a day-ender.
+  </div>
+
+  <div class="note blue">
+    <strong>🚗 You'll want a car.</strong>
+    Nashville is spread out and transit is thin. Uber/Lyft works fine downtown, but every hike on this list and most of the best food needs wheels. Parking is easy and mostly free everywhere except downtown/The Gulch.
+  </div>
+
+  <h3>The three roads that matter</h3>
+  <div class="card">
+    <div class="top"><h4>Nolensville Pike</h4><span class="pill p-drive">~15 min south</span></div>
+    <div class="meta">Your food street. Full stop.</div>
+    <p>This is Nashville's immigrant corridor — Kurdish, Mexican, Somali, Vietnamese, Salvadoran — stacked in strip malls for about five miles. It's where both of your favorite cuisines live, and it is dramatically better than anything downtown. Unglamorous buildings, outstanding food.</p>
+  </div>
+  <div class="card">
+    <div class="top"><h4>Highway 100 / Belle Meade</h4><span class="pill p-drive">~15 min southwest</span></div>
+    <div class="meta">Your nature road.</div>
+    <p>Runs you straight out to Percy Warner Park, Cheekwood, and on toward the Harpeth River. Leafy, rolling, and quick to get to.</p>
+  </div>
+  <div class="card">
+    <div class="top"><h4>Gallatin Pike / East Nashville</h4><span class="pill p-drive">~15 min east</span></div>
+    <div class="meta">Where locals actually go out.</div>
+    <p>Independent restaurants, dive bars, record shops, coffee. If you want a night out that isn't a bachelorette party, come here instead of Broadway.</p>
+  </div>
+</section>
+
+<!-- ============ HIKING ============ -->
+<section id="hikes">
+  <h2><span class="em">🥾</span> Hiking &amp; Nature</h2>
+  <p class="lede">Organized by how far you have to drive. Middle Tennessee is limestone-and-hardwood country — shaded ridges, hollows, creeks, and cedar glades. The waterfalls are worth the extra driving.</p>
+
+  <h3>Right out the door — under 20 minutes</h3>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Radnor%20Lake%20State%20Park%20Nashville%20TN">Radnor Lake State Park</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">1160 Otter Creek Rd · ~6 miles of trail · easy to moderate <span class="stars">★ TOP PICK</span></div>
+    <p>The best nature inside the city, and it's not close. A quiet lake ringed by forest, 200+ bird species, and near-guaranteed deer, turtles, herons, and often owls. No running, no bikes, no dogs on the natural trails — which is exactly why it stays peaceful.</p>
+    <div class="order"><b>Do this:</b> Lake Trail out, Ganier Ridge back (~3.5 mi) for a little climb and an overlook. <b>Go at 7am.</b> Trails open 6am; the lots are small and fill fast, and morning is when the wildlife is out. If the main lot is full, people park at the church across the street.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Deep%20Well%20Trailhead%20Percy%20Warner%20Park%20Nashville%20TN">Percy Warner Park — Mossy Ridge &amp; Warner Woods</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">Deep Well trailhead off Hwy 100 · 2.5 mi or 4.5 mi loops · moderate</div>
+    <p>3,100 acres of oak-hickory forest with real elevation — this is where Nashville trains for things. <b>Warner Woods</b> (2.5 mi, white blaze) is the shorter loop; <b>Mossy Ridge</b> (4.5 mi, red blaze) rolls through hollows, past springs and small seasonal waterfalls, and through open meadows. Dogs allowed on leash.</p>
+    <div class="order"><b>Bonus:</b> Drive up to the <b>Allée &amp; Belle Meade Stone Steps</b> at the Belle Meade Blvd entrance — a grand limestone staircase up to a hilltop view. Locals run these. You can just walk them and enjoy the view.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Edwin%20Warner%20Park%20Nature%20Center%20Nashville%20TN">Edwin Warner Park + Nature Center</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">Across Hwy 100 from Percy Warner · easy</div>
+    <p>Percy's gentler twin. Flatter trails, a small nature center with exhibits and staff who'll tell you what's blooming or nesting, and the Harpeth Woods Trail (2.5 mi) through an old quarry. Good for a low-effort morning or an evening walk.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Shelby%20Bottoms%20Nature%20Center%20Nashville%20TN">Shelby Bottoms Greenway</a></h4><span class="pill p-drive">15 min east</span></div>
+    <div class="meta">960 acres · 5+ mi paved, 5+ mi primitive · flat</div>
+    <p>Bottomland forest and wetland along three miles of the Cumberland River. Paved and flat, so it's the easy pick when it's hot or you just want to move. Great birding, and a pedestrian bridge connects across the river. Pair it with breakfast or tacos in East Nashville.</p>
+  </div>
+
+  <h3>Half-day — 30 to 50 minutes out</h3>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Narrows%20of%20the%20Harpeth%20State%20Park%20Kingston%20Springs%20TN">Narrows of the Harpeth</a></h4><span class="pill p-drive">35 min west</span></div>
+    <div class="meta">Harpeth River State Park · ~0.8 mi of trails · short but steep-ish <span class="stars">★ TOP PICK</span></div>
+    <p>Small park, huge payoff. The <b>Bluff Trail</b> climbs to Table Top Rock, a limestone ledge with the best river-gorge view near Nashville — the most photographed spot in the park. The <b>Tunnel Trail</b> takes you to the Montgomery Bell Tunnel, a 290-foot waterway hand-dug through solid rock in 1818 to power an iron forge. It's a National Historic Landmark and genuinely strange to stand in front of.</p>
+    <div class="order"><b>Best combo:</b> Hike the bluff in the morning, then rent a kayak and float the Harpeth in the afternoon (see Water, below). Trails are short — you can do all three in about an hour.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Beaman%20Park%20Nature%20Center%20Nashville%20TN">Beaman Park</a></h4><span class="pill p-drive">30 min northwest</span></div>
+    <div class="meta">1,500 acres · 14+ mi of trail · moderate</div>
+    <p>The most genuinely remote-feeling park still inside Davidson County. Deep hollows, creek crossings, wildflowers, very few people. The <b>Sedge Hill + Henry Hollow</b> combo (~3.2 mi) from the nature center is the standard loop. Bring bug spray — it's real woods.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Long%20Hunter%20State%20Park%20Hermitage%20TN">Long Hunter State Park</a></h4><span class="pill p-drive">30 min east</span></div>
+    <div class="meta">On Percy Priest Lake · easy to strenuous</div>
+    <p>Two very different options. <b>Couchville Lake Trail</b> is a flat, paved 2-mile loop around a lake — easy and pretty, with a boardwalk section. The <b>Volunteer Trail</b> runs 5+ miles one way along the shore for something longer. There's also a rare <b>cedar glade</b> ecosystem here — thin-soil limestone barrens with wildflowers that grow almost nowhere else on earth. Swimming at Bryant Grove.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Montgomery%20Bell%20State%20Park%20Burns%20TN">Montgomery Bell State Park</a></h4><span class="pill p-drive">45 min west</span></div>
+    <div class="meta">Three lakes · ~19 mi of trail</div>
+    <p>Rolling forest around three lakes, an 11.7-mile overnight loop if you want a real day of it, and shorter lake loops if you don't. Quieter than the in-town parks and shaded almost the whole way.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Old%20Stone%20Fort%20State%20Archaeological%20Park%20Manchester%20TN">Old Stone Fort State Archaeological Park</a></h4><span class="pill p-drive">70 min southeast</span></div>
+    <div class="meta">Manchester, TN · 1.25 mi loop + spur trails · easy</div>
+    <p>A 2,000-year-old Native American ceremonial earthwork built on a bluff between two rivers — and the loop trail passes something like five waterfalls and cascades. Wildly underrated. Shaded, flat, and about as much waterfall-per-mile as you'll find.</p>
+  </div>
+
+  <h3>Worth the day trip — waterfalls</h3>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Cummins%20Falls%20State%20Park%20Cookeville%20TN">Cummins Falls State Park</a></h4><span class="pill p-drive">1 hr 30 min east</span></div>
+    <div class="meta">75-ft falls into an emerald swimming hole <span class="stars">★ IF YOU DO ONE</span></div>
+    <p>The best swimming-hole waterfall in Tennessee. A 1.5-mile hike down, involving stream crossings and scrambling over wet limestone, drops you at a wide plunge pool at the base of the falls.</p>
+    <div class="note" style="margin:12px 0 0">
+      <strong>⚠️ You must buy a gorge permit in advance.</strong>
+      $7 online only, at <b>reserve.tnstateparks.com</b>, capped at ~200 per day, and they sell out. You'll watch a short safety video. <b>Buy it the moment you know your date.</b> Gorge access closes on any rain in the watershed (flash flood risk — this is not a formality), and there are no refunds or rain checks. The overlook and upper trails don't need a permit, so the trip isn't wasted if the gorge closes. Wear shoes you can soak — water shoes or old sneakers, not flip-flops.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Rock%20Island%20State%20Park%20Rock%20Island%20TN">Rock Island State Park</a></h4><span class="pill p-drive">1 hr 40 min east</span></div>
+    <div class="meta">Great Falls, Caney Fork Gorge, sand beach</div>
+    <p>Water everywhere. The Caney Fork Gorge below the dam is a moonscape of limestone shelves with waterfalls pouring straight out of the cliff face, plus rock-hopping, swimming, and natural pools (the "Cold Hole" and "Warm Hole"). There's also a real sand beach with a bathhouse on Center Hill Lake.</p>
+    <div class="order"><b>Heads up:</b> water levels are controlled by dam releases and can rise <em>fast</em>. Obey the sirens and posted warnings, and stay out of the gorge when they're running.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Fall%20Creek%20Falls%20State%20Park%20Spencer%20TN">Fall Creek Falls State Park</a></h4><span class="pill p-drive">2 hr east</span></div>
+    <div class="meta">256-ft falls — tallest free-fall waterfall east of the Mississippi</div>
+    <p>The big one. If you want one full day that feels like a different state, this is it — four major waterfalls, a gorge, suspension bridges, and overlooks. The <b>Woodland Trail</b> (0.9 mi) plus the <b>Gorge Overlook</b> spur (0.2 mi) is the best effort-to-view ratio; the descent to the base of Fall Creek Falls is short but steep and rocky. It's a long drive, so leave early and make a day of it.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Burgess%20Falls%20State%20Park%20Sparta%20TN">Burgess Falls State Park</a></h4><span class="pill p-drive">1 hr 30 min east</span></div>
+    <div class="meta">Four waterfalls on one 1.5-mi river trail</div>
+    <p>The River Trail passes three waterfalls before reaching an observation deck over the 136-foot main falls. Gorgeous and compact.</p>
+    <div class="order"><b>Two things to know:</b> there is currently <b>no trail access to the base of the falls</b> — the base is reachable only by boat/kayak from Cane Hollow. And a new visitor center is under construction, so the upper lot is closed and parking is very limited. Go early or pair it with Cummins Falls (they're 25 min apart).</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Short%20Springs%20State%20Natural%20Area%20Tullahoma%20TN">Short Springs State Natural Area</a></h4><span class="pill p-drive">80 min southeast</span></div>
+    <div class="meta">Tullahoma · under 2 mi round trip</div>
+    <p>A quiet, low-key alternative: Machine Falls drops ~60 feet into a mossy amphitheater at the end of a short shaded trail. Almost never crowded compared to the state parks.</p>
+  </div>
+</section>
+
+<!-- ============ WATER ============ -->
+<section id="water">
+  <h2><span class="em">🛶</span> On the Water</h2>
+  <p class="lede">In August this is arguably the best way to spend an outdoor afternoon — you're in the shade of the river bluffs and in the water at the same time.</p>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Broken%20Paddle%20Outfitters%20Nashville%20TN">Float the Harpeth River</a></h4><span class="pill p-drive">20–35 min west</span></div>
+    <div class="meta">Canoe, kayak, tube rentals with shuttle <span class="stars">★ TOP PICK</span></div>
+    <p>The Harpeth is a slow, clear, Class I river — the third most biologically diverse river in the country — winding through limestone bluffs. Outfitters run you upstream and you paddle back down. Trips run roughly 2 to 5 hours depending on the put-in. Herons, turtles, bluffs, and swimming holes the whole way.</p>
+    <div class="order"><b>Three outfitters:</b> <b>Broken Paddle Outfitters</b> (8547 US-70, Bellevue — closest to you, ~15 min from downtown, 7 days a week, book at least 12 hours ahead), <b>Foggy Bottom Canoe</b> (Kingston Springs, the classic), and <b>Sunshine's Adventures</b>. Book ahead on weekends. Bring water shoes and a dry bag for your phone.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Anderson%20Road%20Recreation%20Area%20Percy%20Priest%20Lake%20Nashville%20TN">Percy Priest Lake — swimming</a></h4><span class="pill p-drive">25 min east</span></div>
+    <div class="meta">Anderson Road, Cook, Hamilton Creek, Bryant Grove</div>
+    <p>The big lake on Nashville's east side, warmest in July and August. <b>Anderson Road Day Use</b> has the best sandy swim beach with roped-off zones, restrooms, and a playground ($5/vehicle, no pets, can close when full — go early on weekends). <b>Hamilton Creek</b> is quieter with a pebbled beach and easy kayak/paddleboard launching. <b>Bryant Grove</b> is inside Long Hunter State Park, so you can hike and swim on the same trip.</p>
+  </div>
+</section>
+
+<!-- ============ MIDDLE EASTERN ============ -->
+<section id="me">
+  <h2><span class="em">🥙</span> Middle Eastern</h2>
+  <p class="lede">Here's the thing nobody tells you about Nashville: it's home to <b>the largest Kurdish community in North America</b> — over 15,000 people, here since 1976. The neighborhood off Nolensville Pike is called <b>Little Kurdistan</b>, and it is the reason you're going to eat better here than you expect.</p>
+
+  <h3>Kurdish &amp; Turkish — Little Kurdistan</h3>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Edessa%20Restaurant%20Nashville%20TN">Edessa Restaurant</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">3802 Nolensville Pike · Kurdish &amp; Turkish · roughly 11am–8:30/9pm daily <span class="stars">★ START HERE</span></div>
+    <p>The crown jewel of the strip, opened in 2018 by three Kurdish men who emigrated from Turkey. Unassuming strip mall on the outside; inside there are hunks of meat hanging on a rack and pillowy bubbles of lavash thrown straight from the oven onto your table. This is the one to build a meal around.</p>
+    <div class="order"><b>Order:</b> the <b>mixed grill kabob</b> (easily feeds two), plus hummus, ezme, and whatever lavash comes out of the oven. Turkish coffee and baklava to finish. If you end up with a group, the "kabob festival" spread is the move.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=House%20of%20Kabob%20Nashville%20TN">House of Kabob</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">One of Nashville's oldest Kurdish restaurants</div>
+    <p>The old guard — around long before anyone was writing articles about Little Kurdistan. Straightforward, generous, consistently good kabobs and stews. Go here if Edessa has a wait.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Newroz%20Market%20Nashville%20TN">Newroz Market &amp; House of Shawarma</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">Market + kitchen in the back <span class="stars">★ SLEEPER PICK</span></div>
+    <p>"Newroz" is Kurdish for <em>new day</em>. Front of house is a genuinely great pantry market — olive oils, syrups, spices, nuts, rice, pulses, halal meat, fresh bread. Tucked in the back is a kitchen carving shawarma straight off the spit into house-baked bread. This is the kind of place you'd never find on your own.</p>
+    <div class="order"><b>Order:</b> a shawarma wrap at the back counter, then shop the aisles while you eat it.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Azadi%20International%20Food%20Market%20and%20Bakery%20Nashville%20TN">Azadi International Food Market &amp; Bakery</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">Market + bakery, near Elysian Fields</div>
+    <p>Come for the bakery counter. Fresh flatbread, pastries, and baklava, plus a full international grocery. Great place to grab breakfast to take on a hike.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Sulav%20International%20Market%20Nashville%20TN">Sulav International Market</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">Halal meats, fresh bread, shawarma, homemade baklava</div>
+    <p>Third of the market trio. The homemade baklava is the reason to stop.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Reebar%20Restaurant%20Nashville%20TN">Reebar (Jerusalem Reebar)</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">Kurdish home cooking</div>
+    <p>Less kabob-focused, more the stews and rice dishes you'd actually eat at home. Worth it if you want something beyond grilled meat.</p>
+  </div>
+
+  <h3>Elsewhere in the city</h3>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Lyra%20Nashville%20TN">Lyra</a></h4><span class="pill p-drive">15 min east</span></div>
+    <div class="meta">935 W Eastland Ave, East Nashville · dinner only, Mon–Sat 5–10pm, closed Sun <span class="stars">★ SPLURGE</span></div>
+    <p>The chef-driven, modern end of the spectrum — Chef Hrant Arakelian doing a seasonal Middle Eastern menu that's genuinely one of the best meals in Nashville, in any category. Small, warm room. If you're going to have one nice dinner out this week, make it this.</p>
+    <div class="order"><b>Order:</b> hummus, man'oushe, fried halloumi, baba ghanoush, and whatever the seasonal special is. <b>Reserve ahead</b> — it books up.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Epice%20Nashville%20TN">Epice</a></h4><span class="pill p-drive">8 min</span></div>
+    <div class="meta">2902 12th Ave S, 12 South · Lebanese · Tue–Sat 11am–10pm, Sun to 9pm, closed Mon</div>
+    <p>Lebanese bistro on 12 South's restaurant row — closest of the good Middle Eastern options to you, and a lovely patio. Mezze-forward, bright, easy. Great for a long lunch, and you can walk 12 South's shops after.</p>
+    <div class="order"><b>Order:</b> the mezze spread — muhammara, labneh, kibbeh nayeh if you're into it — plus the lamb.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Middle%20Eatz%20Nashville%20TN">Middle Eatz</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">412 Harding Place · Yemeni, family-owned</div>
+    <p>Widely called the best falafel in Nashville, and Yemeni food is rare here — different spicing, different breads, worth the trip on its own.</p>
+  </div>
+</section>
+
+<!-- ============ MEXICAN ============ -->
+<section id="mex">
+  <h2><span class="em">🌮</span> Mexican</h2>
+  <p class="lede">Same road, different half. Nolensville Pike is lined with taquerías, panaderías, and carnicerías, and a lot of them are excellent. Then there are two or three destination spots elsewhere in town that are worth a special trip.</p>
+
+  <h3>The destinations</h3>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Mas%20Tacos%20Por%20Favor%20Nashville%20TN">Mas Tacos Por Favor</a></h4><span class="pill p-drive">15 min east</span></div>
+    <div class="meta">732 McFerrin Ave, East Nashville · Tue–Sat 11am–9pm, Sun 10am–4pm, closed Mon <span class="stars">★ TOP PICK</span></div>
+    <p>Started in a 1974 Winnebago, now a Nashville institution and reigning winner of the Scene's Best Taco readers' poll. Scratch-made, counter-service, cash-friendly, always a little bit of a line. This is the one everybody who lives here loves.</p>
+    <div class="order"><b>Order:</b> the <b>fried avocado taco</b> and the <b>fish taco</b> (people compare it to California), the sweet potato &amp; quinoa taco, tortilla soup, and an horchata or agua fresca. Go at an off hour.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Maiz%20de%20la%20Vida%20Nashville%20TN">Maíz de la Vida</a></h4><span class="pill p-drive">8 min</span></div>
+    <div class="meta">Near the Gulch / Pie Town · heirloom masa <span class="stars">★ SPLURGE</span></div>
+    <p>Chef Julio Hernández — James Beard Emerging Chef 2023, Best Chef: Southeast semifinalist 2025 — nixtamalizes heirloom Mexican corn in-house and hand-presses every tortilla daily. The tortilla itself is the point, and once you've had one you'll notice the difference everywhere else. This started as a food truck and is now one of the most acclaimed restaurants in the city.</p>
+    <div class="order"><b>Order:</b> anything on a tortilla, plus whatever the mole or special of the day is. Check hours before you go — the dine-in schedule has changed over time.</div>
+  </div>
+
+  <h3>Nolensville Pike — the real deal</h3>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Tacos%20y%20Mariscos%20El%20Amigo%20Nashville%20TN">Tacos y Mariscos El Amigo</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">3901 Nolensville Pike · in an old gas station</div>
+    <p>Exactly what it sounds like and exactly as good as that implies. Cheap, flavorful, tacos and seafood. A local favorite for years.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Mas%20Amigos%20Mexican%20Kitchen%20Nashville%20TN">Mas Amigos Mexican Kitchen</a></h4><span class="pill p-drive">12 min</span></div>
+    <div class="meta">2615 Nolensville Pike · bright, modern room</div>
+    <p>The comfortable one on the strip — good if you want a proper sit-down dinner with a full bar rather than a counter and plastic chairs. Food still holds up.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Taqueria%20Mexico%20Nolensville%20Pike%20Nashville%20TN">Taquería México</a></h4><span class="pill p-drive">17 min</span></div>
+    <div class="meta">4652 Nolensville Pike</div>
+    <p>No-frills, consistently excellent. Al pastor and suadero.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Carniceria%20y%20Taqueria%20Don%20Juan%20Nashville%20TN">Carnicería y Taquería Don Juan</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">Near Nolensville Pike &amp; Thompson Ln</div>
+    <p>Butcher counter in front, taquería in back — the classic format, and usually a sign of good tacos. Order at the counter, eat at a folding table, be very happy.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Las%20Americas%20Nashville%20TN">Las Américas</a></h4><span class="pill p-drive">15 min</span></div>
+    <div class="meta">Nolensville Pike · pan-Latin</div>
+    <p>Broader than strictly Mexican — Central and South American dishes alongside. Good for pupusas and things you won't find at the taquerías.</p>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=La%20Hacienda%20Taqueria%20Nashville%20TN">Also on the strip</a></h4><span class="pill p-drive">12–18 min</span></div>
+    <div class="meta">If you want to just wander</div>
+    <p><b>El Tapatio</b>, <b>Las Cazuelas</b>, <b>La Terraza</b>, <b>Taquería San Luis</b>, <b>Los Cantaritos</b>, and <b>La Hacienda</b> are all on or near Nolensville Pike and all have their partisans. Honestly, the strategy that works best here is to drive the strip, pick the place with the fullest parking lot, and go in. It's hard to do badly.</p>
+    <div class="order"><b>Don't skip the panaderías.</b> Any Mexican bakery on the Pike — walk in, grab a tray and tongs, load up on conchas and pan dulce for about $1 each. Best cheap breakfast in Nashville.</div>
+  </div>
+</section>
+
+<!-- ============ CLASSICS ============ -->
+<section id="classics">
+  <h2><span class="em">🍗</span> Nashville Classics</h2>
+  <p class="lede">You're here for a week — you should eat the three things Nashville actually invented or perfected: hot chicken, the meat-and-three, and a proper biscuit.</p>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Prince%27s%20Hot%20Chicken%20South%20Nashville%20TN">Prince's Hot Chicken</a></h4><span class="pill p-drive">18 min</span></div>
+    <div class="meta">5814 Nolensville Pike · Mon–Sat 11am–10pm, closed Sun <span class="stars">★ THE ORIGINAL</span></div>
+    <p>The Thornton family invented Nashville hot chicken here. Deeper, darker crust, brown sugar in the paste, pepper-forward heat that builds and lingers. Order it fresh and expect to wait — it's cooked to order and that's the point.</p>
+    <div class="order"><b>Heat guidance:</b> "Medium" at Prince's is hotter than "hot" almost anywhere else. If you're unsure, get <b>mild</b> — it still has real heat. Get white bread and pickles, potato salad, and a drink you can refill.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Hattie%20B%27s%20Hot%20Chicken%20Midtown%20Nashville%20TN">Hattie B's Hot Chicken — Midtown</a></h4><span class="pill p-walk">walkable</span></div>
+    <div class="meta">112 19th Ave S · essentially next door to you</div>
+    <p>The modern, approachable version — brighter, tangier heat and a crisp orange-red crust. Six heat levels from "Southern" (no heat) up to "Shut the Cluck Up." Purists prefer Prince's; Hattie B's is genuinely good and it's a five-minute walk from your Airbnb. Lines can be long at peak — go at 11am or after 8pm.</p>
+    <div class="order"><b>Order:</b> Medium is the sweet spot. Get the pimento mac and the black-eyed pea salad.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Arnold%27s%20Country%20Kitchen%20Nashville%20TN">Arnold's Country Kitchen</a></h4><span class="pill p-drive">7 min</span></div>
+    <div class="meta">605 8th Ave S · <b>lunch only, weekdays</b> · James Beard America's Classics <span class="stars">★ TOP PICK</span></div>
+    <p>The definitive Nashville meat-and-three: you slide a tray down a cafeteria line, pick one meat and three vegetables, and Jack Arnold's family has been doing it since 1982. Roast beef, fried green tomatoes, turnip greens, chocolate pie. Everyone from construction crews to country stars is in that line.</p>
+    <div class="order"><b>Critical:</b> lunch only, and only on weekdays — typically around 10:30am to 2:30pm. Don't plan on it for dinner or a weekend. Get the <b>roast beef</b> and don't skip the chess or chocolate pie.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Pancake%20Pantry%20Nashville%20TN">Pancake Pantry</a></h4><span class="pill p-walk">walkable</span></div>
+    <div class="meta">1796 21st Ave S, Hillsboro Village · cash-friendly, expect a line</div>
+    <p>A Nashville institution since 1961, right in your neighborhood. 20-odd kinds of pancakes, sweet and savory, with house-made syrups. The line down the sidewalk is part of the experience — it moves faster than it looks.</p>
+    <div class="order"><b>Order:</b> the sweet potato pancakes or the Swiss chocolate crêpes. Go on a weekday morning; weekends are brutal.</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h4><a href="https://maps.apple.com/?q=Brown%27s%20Diner%20Nashville%20TN">Brown's Diner</a></h4><span class="pill p-walk">walkable</span></div>
+    <div class="meta">Blair Blvd, Hillsboro Village · open since 1927</div>
+    <p>One of the oldest restaurants still operating in Nashville, half of it built into an old trolley car. Cheeseburger, cold beer, songwriters at the bar. Not fancy, not trying to be, and beloved for exactly that.</p>
+  </div>
+</section>
+
+<!-- ============ MORE FOOD ============ -->
+<section id="more">
+  <h2><span class="em">🍽️</span> More Food Worth Crossing Town For</h2>
+  <p class="lede">Nashville's restaurant scene got very good, very fast. These are the ones that would be notable in any city.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Rolf%20and%20Daughters%20Nashville%20TN">Rolf and Daughters</a></h4></div>
+      <div class="meta">700 Taylor St, Germantown · pasta, dinner</div>
+      <p>The restaurant that put modern Nashville on the national map. House-made pasta in a converted factory building. Reserve.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Butcher%20and%20Bee%20Nashville%20TN">Butcher &amp; Bee</a></h4></div>
+      <div class="meta">902 Main St, East Nashville · Mediterranean-ish</div>
+      <p>Whipped feta with hot honey is the dish people drive across town for. Great brunch, great patio, sits right in your Middle Eastern wheelhouse.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Cafe%20Roze%20Nashville%20TN">Café Roze</a></h4></div>
+      <div class="meta">1115 Porter Rd, East Nashville · all-day</div>
+      <p>Pink-hued, effortlessly cool, good from 8am coffee through evening cocktails. Excellent solo-with-a-book spot.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Folk%20Nashville%20TN">Folk</a></h4></div>
+      <div class="meta">823 Meridian St, East Nashville · wood-fired</div>
+      <p>Wood-fired pizza and vegetables, bright and seasonal. One of the most consistently pleasant meals in the city.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Nashville%20Farmers%20Market%20Nashville%20TN">Nashville Farmers' Market</a></h4></div>
+      <div class="meta">900 Rosa Parks Blvd · lunch daily</div>
+      <p>Farm sheds plus an indoor food hall with ~20 vendors — Jamaican jerk, Korean bibimbap, Indian biryani, vegan Mexico City tacos, Neapolitan pizza, gyros. Cheap, air-conditioned, great for a hot afternoon. Next to Bicentennial Mall.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Proper%20Bagel%20Nashville%20TN">Proper Bagel</a></h4></div>
+      <div class="meta">Belmont Blvd · near you</div>
+      <p>Legitimately good bagels, a wall of flavored cream cheeses, and a short drive from the Airbnb. Good pre-hike fuel.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ COFFEE ============ -->
+<section id="coffee">
+  <h2><span class="em">☕</span> Coffee &amp; Slow Mornings</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Fido%20Nashville%20TN">Fido</a></h4><span class="pill p-walk">walkable</span></div>
+      <div class="meta">1812 21st Ave S, Hillsboro Village</div>
+      <p>Your default. Bongo Java family, full food menu, big windows, open early. Sit-and-linger energy.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Crema%20Coffee%20Roasters%20Nashville%20TN">Crema</a></h4></div>
+      <div class="meta">15 Hermitage Ave · ~8 min</div>
+      <p>Nashville's coffee cornerstone. Serious espresso, seasonal single origins, pour-overs. The nerds' pick.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Barista%20Parlor%20East%20Nashville%20TN">Barista Parlor</a></h4></div>
+      <div class="meta">Gallatin Ave flagship, East Nashville</div>
+      <p>High ceilings, industrial design, the most photographed coffee shop in the city. Several locations.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Steadfast%20Coffee%20Nashville%20TN">Steadfast Coffee</a></h4></div>
+      <div class="meta">Germantown</div>
+      <p>The experimental one — try the flash-chilled coffee. Minimalist room, good seasonal food.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=8th%20and%20Roast%20Nashville%20TN">8th &amp; Roast</a></h4></div>
+      <div class="meta">8th Ave S · ~7 min</div>
+      <p>Local roaster, low-key, easy parking. Good on the way to or from a hike.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Frothy%20Monkey%2012%20South%20Nashville%20TN">Frothy Monkey</a></h4></div>
+      <div class="meta">12 South and several others</div>
+      <p>Coffee shop that turns into a real breakfast/lunch spot. Reliable, several locations, always open.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MUSIC ============ -->
+<section id="music">
+  <h2><span class="em">🎸</span> Music, the Way Locals Do It</h2>
+  <p class="lede">Broadway — the neon honky-tonk strip downtown — is worth exactly one hour of your life, once, so you can say you did it. Everything good is elsewhere.</p>
+
+  <div class="note">
+    <strong>🎟️ The Bluebird Cafe takes planning.</strong>
+    Nashville's famous songwriter listening room (4104 Hillsboro Pike, ~10 min from you). Reservations are <b>online only</b> at bluebirdcafe.com — no phone reservations — and they release on a schedule and vanish fast. There's a $15/seat food-and-drink minimum plus cover. <b>If you miss out:</b> for most Tuesday–Sunday shows they hold 10–12 church-pew seats for walk-ups, first-come when doors open. Get in line early. It's a genuinely quiet, respectful room — no talking during songs.
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Station%20Inn%20Nashville%20TN">Station Inn</a></h4><span class="pill p-star">★ do this</span></div>
+      <div class="meta">402 12th Ave S, The Gulch · bluegrass</div>
+      <p>A cinderblock building the Gulch's glass towers grew up around. World-class bluegrass, cash bar, folding chairs, mostly no reservations — show up early. The most authentic music room in Nashville.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Robert%27s%20Western%20World%20Nashville%20TN">Robert's Western World</a></h4></div>
+      <div class="meta">416 Broadway · free, all day</div>
+      <p>The one honky-tonk on Broadway that still has real honky-tonk bands. Fried bologna sandwich, boots on the wall, no cover. If you do Broadway, do this.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Ryman%20Auditorium%20Nashville%20TN">Ryman Auditorium</a></h4></div>
+      <div class="meta">116 5th Ave N · the Mother Church</div>
+      <p>Best-sounding room in America, in an 1892 tabernacle. Check the calendar — if <em>anything</em> you'd remotely enjoy is playing, buy the ticket. Daytime self-guided tours are also excellent.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Rudy%27s%20Jazz%20Room%20Nashville%20TN">Rudy's Jazz Room</a></h4></div>
+      <div class="meta">Wedgewood-Houston · jazz</div>
+      <p>Basement jazz club, New Orleans food, low ceilings, great players. Reserve a table.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=The%20Basement%20East%20Nashville%20TN">The Basement East</a></h4></div>
+      <div class="meta">East Nashville · rock/indie</div>
+      <p>Where East Nashville sees bands. Check who's on — it's usually someone good.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=3rd%20and%20Lindsley%20Nashville%20TN">3rd &amp; Lindsley</a></h4></div>
+      <div class="meta">Rock, soul, blues</div>
+      <p>Long-running room with a great house sound. The Monday night Time Jumpers residency (Vince Gill's western swing band) is a Nashville rite of passage — check if it's running.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Grand%20Ole%20Opry%20House%20Nashville%20TN">Grand Ole Opry</a></h4></div>
+      <div class="meta">Opry House, Music Valley</div>
+      <p>Touristy, yes — also genuinely fun and unlike anything else. Five or six acts a night, live radio broadcast with the ads read on stage, huge range of performers.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Santa%27s%20Pub%20Nashville%20TN">Santa's Pub</a></h4></div>
+      <div class="meta">2225 Bransford Ave · karaoke in a trailer</div>
+      <p>A double-wide trailer painted Christmas red, run by a man in a Santa beard, cash only, $2 beer, and the best karaoke in the South. Everyone from record execs to bikers. A true Nashville institution.</p>
+    </div>
+  </div>
+
+  <div class="note green">
+    <strong>🎶 Free live music, most evenings.</strong>
+    <b>Musicians Corner</b> in Centennial Park — a walk from your Airbnb — runs free outdoor shows on select dates, with food trucks and local artisans. Check conservancyonline.com for what's on during your week. <b>Cheekwood's "Songwriters Under the Stars"</b> is another summer evening option: bring a blanket, buy wine, sit in the gardens.
+  </div>
+</section>
+
+<!-- ============ INDOOR ============ -->
+<section id="indoor">
+  <h2><span class="em">🏛️</span> For the Hot Part of the Day</h2>
+  <p class="lede">Save these for 12–4pm when it's 100° outside, or for the afternoon a thunderstorm rolls through.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=The%20Parthenon%20Nashville%20TN">The Parthenon &amp; Centennial Park</a></h4><span class="pill p-walk">walkable</span></div>
+      <div class="meta">2500 West End Ave · park free, museum ticketed</div>
+      <p>A full-scale replica of the Athenian Parthenon with a 42-foot gilded Athena inside, plus art galleries. Absurd and wonderful. The 132-acre park around it has a sunken garden, a lake, and walking trails, and it's open dawn to 11pm. This is your closest green space — great for an evening walk.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Cheekwood%20Estate%20and%20Gardens%20Nashville%20TN">Cheekwood Estate &amp; Gardens</a></h4></div>
+      <div class="meta">1200 Forrest Park Dr · ~15 min</div>
+      <p>A 1930s limestone mansion on 55 acres of formal gardens with a sculpture trail through the woods. Given how much you like being outside, this is the best hot-day compromise: shaded garden paths, a real art museum indoors, and a café. Go late afternoon when the light is good and the heat breaks.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Frist%20Art%20Museum%20Nashville%20TN">Frist Art Museum</a></h4></div>
+      <div class="meta">919 Broadway · ~7 min</div>
+      <p>A gorgeous 1934 art deco former post office, now a rotating-exhibition museum. No permanent collection, so check what's up — but the building alone is worth it, and it's blessedly cold inside.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Country%20Music%20Hall%20of%20Fame%20Nashville%20TN">Country Music Hall of Fame</a></h4></div>
+      <div class="meta">Downtown</div>
+      <p>Even if country isn't your thing, it's an extremely well-made museum about American music generally. Two to three hours.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Third%20Man%20Records%20Nashville%20TN">Third Man Records</a></h4></div>
+      <div class="meta">623 7th Ave S</div>
+      <p>Jack White's label, storefront, and record-pressing operation. You can watch records get pressed through a window, and there's a booth where you can cut your own vinyl. Weird and great, 20 minutes.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Grimey%27s%20New%20and%20Preloved%20Music%20Nashville%20TN">Grimey's Records</a></h4></div>
+      <div class="meta">1060 E Trinity Ln, East Nashville</div>
+      <p>The great Nashville record store, in an old church. Frequent free in-store performances — check the calendar.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Bicentennial%20Capitol%20Mall%20State%20Park%20Nashville%20TN">Bicentennial Capitol Mall</a></h4></div>
+      <div class="meta">Next to the Farmers' Market</div>
+      <p>An outdoor park that's essentially a walk-through map of Tennessee — a 200-foot granite state map, a river wall, a 95-bell carillon. Combine with lunch at the Farmers' Market.</p>
+    </div>
+    <div class="card">
+      <div class="top"><h4><a href="https://maps.apple.com/?q=Belle%20Meade%20Historic%20Site%20Nashville%20TN">Belle Meade Historic Site</a></h4></div>
+      <div class="meta">~15 min, near Percy Warner</div>
+      <p>A 19th-century thoroughbred farm with an honest, well-done tour that includes the enslaved people who ran it. Winery tasting included. Easy to pair with a Percy Warner morning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIPS ============ -->
+<section id="tips">
+  <h2><span class="em">💡</span> Practical Notes</h2>
+
+  <div class="card">
+    <h4>Before you go</h4>
+    <ul class="tight">
+      <li><b>Buy your Cummins Falls gorge permit as soon as you know the date</b> — $7, online only, capped daily, sells out.</li>
+      <li><b>Check the Bluebird Cafe calendar</b> the day reservations drop for your week.</li>
+      <li><b>Check the Ryman calendar</b> and Musicians Corner (Centennial Park) for your dates.</li>
+      <li><b>Reserve Lyra and Rolf and Daughters</b> if you want them — they book up.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>Hiking in Tennessee in August</h4>
+    <ul class="tight">
+      <li><b>Be at the trailhead by 7–8am.</b> By 11 it's genuinely unpleasant, and by 2 it's a bad idea.</li>
+      <li>Carry more water than you think — roughly a liter per hour of hiking in this heat.</li>
+      <li><b>Ticks and chiggers are real here.</b> Permethrin on shoes and socks, DEET on skin, and check yourself after. Not a scare tactic; it's just what people do.</li>
+      <li>There are copperheads in Middle Tennessee. Watch where you put hands and feet on rocks, and they'll leave you alone.</li>
+      <li>Poison ivy is everywhere off-trail. "Leaves of three."</li>
+      <li>Afternoon thunderstorms build fast. If you hear thunder on a ridge, head down.</li>
+      <li><b>Never enter a gorge or creek bed when rain is forecast anywhere upstream.</b> Flash flooding is the actual danger in this terrain, not the heat.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>Getting around</h4>
+    <ul class="tight">
+      <li>Parking is free and easy outside downtown and The Gulch. Downtown, use a garage — street parking is a hassle.</li>
+      <li>Nashville drivers are not aggressive, but I-440 and I-65 back up 4–6pm.</li>
+      <li>Most of Nolensville Pike is 15–20 minutes from you and easy to park at.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>Small things that make it better</h4>
+    <ul class="tight">
+      <li><b>Cash</b> helps at a few places — Santa's Pub, some taquerías, some counters.</li>
+      <li>Many of the best spots on Nolensville Pike are <b>closed Sunday or Monday</b>. Check before driving out.</li>
+      <li>Arnold's is <b>weekday lunch only</b>. It's the most common mistake visitors make.</li>
+      <li>Tennessee has no state income tax, but sales tax is high (~9.25%) — prices ring up above the menu.</li>
+      <li>Nashville is friendly. If you're eating alone at a counter, someone will talk to you. That's normal here.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p><b>Have a great week, Lindsey.</b><br>
+  Hours and openings change — worth a quick check before you drive out to anything.</p>
+  <p style="margin-top:14px">Prepared by Lincoln Peixoto · terranovarepm@gmail.com</p>
+</footer>
+
+</div>
+</body>
+</html>
